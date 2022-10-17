@@ -35,7 +35,7 @@ public class Homework14 {
 
         WebElement registrationLinkElement = driver.findElement(By.id("hel"));
 //        WebElement textToGetUsingCssSelector = driver.findElement(By.cssSelector("font[color='#f9f9ff']"));
-
+//
         Thread.sleep(2000);
         registrationLinkElement.click();
         Thread.sleep(5000);
