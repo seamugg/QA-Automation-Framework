@@ -1,16 +1,14 @@
 import org.openqa.selenium.By;
-<<<<<<< HEAD
-=======
+
 import org.openqa.selenium.Keys;
->>>>>>> Troubleshooting
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-<<<<<<< HEAD
-=======
+
 import org.testng.Assert;
->>>>>>> Troubleshooting
+
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -40,10 +38,9 @@ public class hmwk16 {
 
         WebElement submitButton = driver.findElement(By.cssSelector("[type = 'submit']"));
         submitButton.click();
-<<<<<<< HEAD
-=======
+
         Thread.sleep(2000);
->>>>>>> Troubleshooting
+
 
         //create new playlist with xpath locators
 
@@ -51,16 +48,9 @@ public class hmwk16 {
         WebElement xPlaylist = driver.findElement(By.xpath("//*[@title= 'Create a new playlist']"));
         xPlaylist.click();
 
-<<<<<<< HEAD
         Thread.sleep(5000);
 
         WebElement xPlaylist_ = driver.findElement(By.xpath("//*[contains(text(),‘New Playlist’)]"));
-        xPlaylist_.click();
-
-=======
-        Thread.sleep(2000);
-
-        WebElement xPlaylist_ = driver.findElement(By.xpath("//li[contains(text(), 'New Playlist')]"));
         xPlaylist_.click();
 
         Thread.sleep(2000);
@@ -79,7 +69,6 @@ public class hmwk16 {
 
 
 
->>>>>>> Troubleshooting
 //        WebElement xPlaylist1 = driver.findElement(By.xpath("//div[contains(text(),'insert text')]"));
 //        xPlaylist1.click();
 

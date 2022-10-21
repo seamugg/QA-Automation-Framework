@@ -34,13 +34,13 @@ public class Hmwk15 {
 
 
 
-        WebElement searchBar = driver.findElement(By.cssSelector("[name = 'q']"));
 
-        Assert.assertTrue(searchBar.isDisplayed());
-        Thread.sleep(5000);
 
-        searchBar.click();
-        searchBar.sendKeys("Pluto");
+//        Assert.assertTrue(searchBar.isDisplayed());
+//        Thread.sleep(5000);
+//
+//        searchBar.click();
+//        searchBar.sendKeys("Pluto");
 
         WebElement songPluto = driver.findElement(By.cssSelector("[id = 'text']"));
         Assert.assertTrue(songPluto.isDisplayed());
