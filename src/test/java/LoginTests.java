@@ -1,13 +1,37 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class LoginTests {
+public class LoginTests extends BaseTest {
 
-    @Test
+//    @Test(enabled = false, priority = 0)
+//    public void LoginEmptyEmailPasswordTest () {
+//        Assert.assertEquals(driver.getCurrentUrl(), url);
+//    }
+
+    @Test(priority = 1, dataProvider = "invalidCredentials", dataProviderClass = BaseTest.class)
+
+        public void LoginValidEmailValidPasswordTest (String email, String password) {
+
+            provideEmail("seamugg@yahoo.com");
+            providePassword("te$t$tudent");
+            clickSubmitBtn();
+
+            WebElement avatarIcon = driver.findElement(By.xpath("//img[contains(@alt,'Avatar of')]"));
+            Assert.assertTrue(avatarIcon.isDisplayed());
+
+        }
+
+
+
+
+
+    @Test(enabled = false)
     public static void LoginEmptyEmailPasswordTest () {
 
         WebDriver driver = new ChromeDriver();

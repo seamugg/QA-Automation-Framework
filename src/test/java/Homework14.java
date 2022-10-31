@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 
-public class Homework14 {
+public class Homework14 extends  BaseTest{
 
 
 //    Using Selenium, Navigate to "https://bbb.testpro.io/"
@@ -26,7 +26,7 @@ public class Homework14 {
         String registrationURL = "https://bbb.testpro.io/registration.php";
 
 
-        WebDriver driver = new ChromeDriver();
+//        WebDriver driver = new ChromeDriver();
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(url);

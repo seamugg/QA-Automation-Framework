@@ -69,12 +69,5 @@ public class hmwk16 {
 
 
 
-//        WebElement xPlaylist1 = driver.findElement(By.xpath("//div[contains(text(),'insert text')]"));
-//        xPlaylist1.click();
-
-//        WebElement newPlaylist = driver.findElement(By.xpath("//*[@id= 'playlists']"));
-//        xPlaylist.click();
-//i[@title='Create a new playlist']
-//*[@id="playlists"]/form
     }
 }
