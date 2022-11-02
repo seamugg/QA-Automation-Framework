@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,8 +19,8 @@ public class BaseTest {
         }
     }
     @BeforeMethod
-    @Parameters({"baseURL"})
-    public void launchBrowser(String baseURL) {
+
+    public void launchBrowser() {
 
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -27,12 +29,12 @@ public class BaseTest {
     }
 
 
-    @AfterMethod
-    public void TearDownBrowser(){
-        driver.quit();
-
-
-    }
+//    @AfterMethod
+//    public void TearDownBrowser(){
+//        driver.quit();
+//
+//
+//    }
     public void clickSubmitBtn() {
         WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
         submitButton.click();
@@ -51,8 +53,9 @@ public class BaseTest {
 
     }
 
+    @Contract(value = " -> new", pure = true)
     @DataProvider(name="invalidCredentials")
-    public static Object[][] getCredentials(){
+    public static Object[] @NotNull [] getCredentials(){
 
         return new Object[][] {
                 {"invalid@class.com", "invalidPass"},
