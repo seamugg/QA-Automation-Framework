@@ -7,7 +7,11 @@
         <classes>
 
 
-            <class name="Hmwk18"></class>
+            <class name="Hmwk18">
+            <methods>
+                <include name=""/>
+            </methods>
+            </class>
 
         </classes>
     </test>

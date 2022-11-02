@@ -28,6 +28,7 @@ public class Hmwk18 extends BaseTest{
         clickAddToPlaylist();
         addToSuperPlaylist();
         PlaySong();
+        ValidateSongIsPlaying();
 
 
         //Verify the song
@@ -37,9 +38,14 @@ public class Hmwk18 extends BaseTest{
 
     }
 
+    public void ValidateSongIsPlaying(){
+        WebElement ValidateSongPlaying = driver.findElement(By.xpath("//button[@title='Click for a marvelous visualizer']"));
+        ValidateSongPlaying.click();
+        Assert.assertTrue(ValidateSongPlaying.isDisplayed());
+    }
     private void PlaySong() {
 
-        WebElement PlaySong = driver.findElement(By.xpath("//ul/li['playback]"));
+        WebElement PlaySong = driver.findElement(By.xpath("//span[data-testid='play-btn']"));
         PlaySong.click();
     }
 
