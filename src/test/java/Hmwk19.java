@@ -4,6 +4,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static org.openqa.selenium.Keys.ENTER;
+
 
 public class Hmwk19 extends BaseTest{
 
@@ -28,10 +30,12 @@ public class Hmwk19 extends BaseTest{
     private void DeletePlaylist() {
         WebElement GoToPlaylist= driver.findElement(By.xpath("//button[@title='Delete this playlist']"));
         GoToPlaylist.click();
+        GoToPlaylist.sendKeys(new org.openqa.selenium.Keys[]{ENTER});
+
     }
 
     public void GoToPlaylist() {
-        WebElement GoToPlaylist= driver.findElement(By.xpath("//a[@href='#!/playlist/24481']"));
+        WebElement GoToPlaylist= driver.findElement(By.xpath("//a[@href='#!/playlist/27399']"));
         GoToPlaylist.click();
 
     }
