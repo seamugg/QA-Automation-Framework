@@ -24,10 +24,16 @@ public class Hmwk19 extends BaseTest{
         Thread.sleep(3000);
         GoToPlaylist();
         DeletePlaylist();
+        VerifyPlaylistisDeleted();
 
     }
 
-    private void DeletePlaylist() {
+    private void VerifyPlaylistisDeleted() {
+        WebElement AlertifyDelete = driver.findElement(By.xpath("//div[@class ='Alertify')"));
+        AlertifyDelete.isDisplayed();
+    }
+
+     public void DeletePlaylist() {
         WebElement GoToPlaylist= driver.findElement(By.xpath("//button[@title='Delete this playlist']"));
         GoToPlaylist.click();
         GoToPlaylist.sendKeys(new org.openqa.selenium.Keys[]{ENTER});
@@ -35,7 +41,7 @@ public class Hmwk19 extends BaseTest{
     }
 
     public void GoToPlaylist() {
-        WebElement GoToPlaylist= driver.findElement(By.xpath("//a[@href='#!/playlist/27399']"));
+        WebElement GoToPlaylist= driver.findElement(By.xpath("//a[@href='#!/playlist/27532']"));
         GoToPlaylist.click();
 
     }
