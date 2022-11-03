@@ -16,6 +16,11 @@ public class BaseTest {
     String url;
     static WebDriver driver;
     WebDriverWait wait;
+   // Actions actions;
+
+
+
+
     @BeforeSuite
     public static void chromeConfigs() {
 
@@ -35,28 +40,35 @@ public class BaseTest {
 
 
 //    @AfterMethod
-//    public void TearDownBrowser(){
+//    public void TearDownBrowser() {
 //        driver.quit();
-//
-//
 //    }
-    public void clickSubmitBtn() {
 
-        WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[type='submit']")));
+    public void clickSubmitBtn() {
+        WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
         submitButton.click();
     }
 
     public void provideEmail(String email) {
-        WebElement emailField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[type='email']")));
+        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
         emailField.click();
         emailField.sendKeys(email);
     }
 
     public void providePassword(String password) {
-        WebElement passwordField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[type='password']")));
+        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
         passwordField.sendKeys(password);
 
+    }
+    protected WebElement waitForElementToBeClickable(WebElement webElementLocator) {
+        return new WebDriverWait(driver, Duration.ofSeconds(10)).until(
+                ExpectedConditions.elementToBeClickable(webElementLocator));
+    }
+
+    protected WebElement waitForVisibilityOfElement(WebElement webElementLocator) {
+        return new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions
+                .visibilityOf(webElementLocator));
     }
 
     @Contract(value = " -> new", pure = true)
