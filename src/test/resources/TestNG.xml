@@ -7,10 +7,10 @@
         <classes>
 
 
-            <class name="Hmwk20">
-<!--            <methods>-->
-<!--                <include name=""/>-->
-<!--            </methods>-->
+            <class name="Hmwk21">
+            <methods>
+                <include name="RenamePlaylist"/>
+            </methods>
             </class>
 
         </classes>
