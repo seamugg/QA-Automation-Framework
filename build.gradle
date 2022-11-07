@@ -10,9 +10,11 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.jetbrains:annotations:20.1.0'
     testImplementation 'org.testng:testng:7.6.1'
     implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
+
+    implementation group: 'org.jetbrains', name: 'annotations', version: '23.0.0'
+
 }
 
 test {

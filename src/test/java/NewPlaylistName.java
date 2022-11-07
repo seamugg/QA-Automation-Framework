@@ -8,20 +8,14 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 
-//Using Action Class methods, create/refactor the test case renamePlaylist()
-//        Implement Explicit Waits
-//        Remove all Thread.sleep implementations
-//        Create a new branch and commit your changes
-//        Push your code to a remote repository
-//        Create a pull request
-//        Copy and paste the link of the pull request (or your branch) to the field below, so we can check your homework
-public class Hmwk21 extends BaseTest{
+public class NewPlaylistName extends BaseTest{
 
-    Actions action = new Actions(driver);
+    final Actions action = new Actions(driver);
 
 
-@Test
-public void RenamePlaylist(){
+    @Test
+
+        public void RenamePlaylist(){
 
         ChromeOptions chrome_Profile = new ChromeOptions();
         chrome_Profile.addArguments("--disable-notifications");
@@ -45,8 +39,7 @@ public void RenamePlaylist(){
     }
 
 
-    // i role="button" title="Create a new playlist" data-testid="sidebar-create-playlist-btn" class="fa fa-plus-circle create"></i>
-   // li data-v-5f33db96="" data-testid="playlist-context-menu-edit-27813">Edit</li>
+
     private void AddNewName() {
         WebElement AddNewName = driver.findElement(By.xpath("//li[contains(@testid, 'playlist-context-menu-edit-27813')]"));
         AddNewName.click();
@@ -55,13 +48,8 @@ public void RenamePlaylist(){
 
     }
 
-//    private void CreateNewPlaylist() {
-//        WebElement renamePlaylist = driver.findElement(By.xpath("//button[contains(@title, 'Create a new playlist')]"));
-//        action.moveToElement(renamePlaylist).contextClick().perform();
-//    }
-//
     public void GoToPlaylist() {
-        // WebElement GoToPlaylist= driver.findElement(By.xpath("//a[@href='#!/playlist/27538']"));
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href='#!/playlist/27813']")));
         WebElement GoToPlaylist= driver.findElement(By.xpath("//a[@href='#!/playlist/27813']"));
         action.moveToElement(GoToPlaylist).contextClick().perform();

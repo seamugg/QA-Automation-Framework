@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG">
-    <parameter name="baseURL" value="https://bbb.testpro.io" />
-    <test name="Example Test" preserve-order="false">
+<suite name="NewPlaylistName">
+    <parameter name="BaseURL" value="https://bbb.testpro.io/" />
+    <test name="NewPlaylistName" preserve-order="false">
         <classes>
+            <class name="RenamePlaylist">
 
-
-            <class name="Hmwk21">
-            <methods>
-                <include name="RenamePlaylist"/>
-            </methods>
             </class>
-
         </classes>
     </test>
-
 </suite>
