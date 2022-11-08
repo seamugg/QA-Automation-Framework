@@ -13,11 +13,9 @@ import org.testng.annotations.DataProvider;
 import java.time.Duration;
 
 public class BaseTest {
-    String url;
-    static WebDriver driver;
-    WebDriverWait wait;
-   // Actions actions;
 
+    WebDriver driver;
+    String url;
 
 
 
@@ -28,21 +26,26 @@ public class BaseTest {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         }
     }
+
+    @Contract(value = " -> new", pure = true)
+    @DataProvider(name = "invalidCredentials")
+    public static Object[] @NotNull [] getCredentials() {
+
+        return new Object[][]{
+                {"invalid@class.com", "invalidPass"},
+                {"d@class.com", ""},
+                {"", ""}
+        };
+    }
+
     @BeforeMethod
-
     public void launchBrowser() {
-
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
         url = "https://bbb.testpro.io/#!/home";
         driver.get(url);
     }
-
-
-//    @AfterMethod
-//    public void TearDownBrowser() {
-//        driver.quit();
-//    }
 
     public void clickSubmitBtn() {
         WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
@@ -61,6 +64,7 @@ public class BaseTest {
         passwordField.sendKeys(password);
 
     }
+
     protected WebElement waitForElementToBeClickable(WebElement webElementLocator) {
         return new WebDriverWait(driver, Duration.ofSeconds(10)).until(
                 ExpectedConditions.elementToBeClickable(webElementLocator));
@@ -70,21 +74,6 @@ public class BaseTest {
         return new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions
                 .visibilityOf(webElementLocator));
     }
-
-    @Contract(value = " -> new", pure = true)
-    @DataProvider(name="invalidCredentials")
-    public static Object[] @NotNull [] getCredentials(){
-
-        return new Object[][] {
-                {"invalid@class.com", "invalidPass"},
-                {"d@class.com", ""},
-                {"", ""}
-        };
-    }
-
-
-
-
 }
 
 
