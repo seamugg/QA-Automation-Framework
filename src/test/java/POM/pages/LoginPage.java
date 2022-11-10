@@ -43,7 +43,9 @@ public class LoginPage extends BasePage{
                 .clickSubmitBtn();
         return new HomePage(driver);
     }
-
+    public boolean isPageOpened() {
+        return driver.getCurrentUrl().contains("https://bbb.testpro.io");
+    }
 
 
 }

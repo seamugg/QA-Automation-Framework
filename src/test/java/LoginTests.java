@@ -17,16 +17,16 @@ import java.time.Duration;
 
     public class LoginTests extends BaseTest {
 
-        @Test(enabled = false, priority = 0)
-        public void LoginEmptyEmailPasswordTest() {
-            Assert.assertEquals(driver.getCurrentUrl(), url);
-        }
+//        @Test(enabled = false, priority = 0)
+//        public void LoginEmptyEmailPasswordTest() {
+//            Assert.assertEquals(driver.getCurrentUrl(), url);
+//        }
 
-        @Test(priority = 1, dataProvider = "invalidCredentials", dataProviderClass = BaseTest.class)
+        @Test(priority = 0, dataProvider = "invalidCredentials", dataProviderClass = BaseTest.class)
         public void LoginValidEmailValidPasswordTest(String email, String password) {
 
-            provideEmail(email); // "demo@class.com"
-            providePassword(password); // te$t$tudent
+            provideEmail("seamugg@yahoo.com");
+            providePassword("te$t$tudent");
             clickSubmitBtn();
 
             WebElement avatarIcon = driver.findElement(By.xpath("//img[contains(@alt,'Avatar of')]"));
@@ -34,7 +34,7 @@ import java.time.Duration;
 
         }
 
-        @Test(enabled = false, priority = 2)
+       // @Test(enabled = false, priority = 2)
         public void LoginInvalidEmailPasswordTest() throws InterruptedException {
             provideEmail("dem@class.com");
             providePassword("");
@@ -46,7 +46,7 @@ import java.time.Duration;
 
         }
 
-        @Test(enabled = false)
+        //@Test(enabled = false)
         public void LoginValidEmailEmptyPasswordTest() {
             WebDriver driver;
             driver = new ChromeDriver();
@@ -57,7 +57,7 @@ import java.time.Duration;
 
             WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
             emailField.click();
-            emailField.sendKeys("demo@class.com");
+            emailField.sendKeys("seamugg@yahoo.com");
 
             WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
             passwordField.click();
@@ -119,7 +119,7 @@ import java.time.Duration;
             By allButtonSelector = By.className("btn-shuffle-all");
 
             emailField.click();
-            emailField.sendKeys("demo@class.com");
+            emailField.sendKeys("seamugg@yahoo.com");
             passwordField.click();
             passwordField.sendKeys("te$t$tudent");
             submitButton.click();
