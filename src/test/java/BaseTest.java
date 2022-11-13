@@ -3,7 +3,8 @@ import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
@@ -40,11 +41,16 @@ public class BaseTest {
 
     @BeforeMethod
     public void launchBrowser() {
-        driver = new ChromeDriver();
+       // driver = new ChromeDriver();
+
+        System.setProperty("webdriver.gecko.driver","geckodriver.exe");
+        driver = new FirefoxDriver();
+        Actions actions = new Actions(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         url = "https://bbb.testpro.io/#!/home";
         driver.get(url);
+
     }
 
     public void clickSubmitBtn() {
