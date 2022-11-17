@@ -38,4 +38,4 @@ public class AllSongsPage extends BasePage{
     //Add to Favorite
     //PlaySong
     //SortByTitle
-}
+

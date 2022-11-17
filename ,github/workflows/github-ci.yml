@@ -1,0 +1,49 @@
+name: Java GithHub CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Browser'
+        required: true
+        default: 'chrome'
+        type: choice
+        options:
+          - chrome
+          - safari
+          - firefox
+      where:
+        description: 'Where to run'
+        required: true
+        default: 'grid'
+        type: choice
+        options:
+          - local
+          - grid
+          - selenoid
+          - lambdatest
+          - saucelabs
+          - browserstack
+      env:
+        description: 'Environment to run tests against'
+        required: true
+        default: 'qa'
+        type: choice
+        options:
+          - dev
+          - qa
+          - stage
+          - prod
+      suite:
+        description: 'Test suite'
+        required: true
+        default: 'smoke'
+jobs:
+  tests-run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "${{ github.event.inputs.browser }}"
+          echo "${{ github.event.inputs.where }}"
+          echo "${{ github.event.inputs.env }}"
+          echo "${{ github.event.inputs.suite }}"
