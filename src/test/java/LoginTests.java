@@ -95,7 +95,7 @@ public class LoginTests extends BaseTest {
 
     @Test(enabled = false, priority = 2)
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
-        provideEmail("dem@class.com");
+        provideEmail("seamugg@yahoo.com");
         providePassword("");
         clickSubmitBtn();
 
