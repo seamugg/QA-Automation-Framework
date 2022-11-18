@@ -2,34 +2,32 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chromium.ChromiumNetworkConditions;
-import org.openqa.selenium.chromium.HasNetworkConditions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.time.Duration;
 
 public class BaseTest {
 
-    WebDriver driver;
-    String url;
-    WebDriverWait wait;
-    Actions actions;
+    static WebDriver driver;
+    static WebDriverWait wait;
+    static String url;
+    static Actions actions;
+    static ThreadLocal<WebDriver> threadDriver;
 
 
 
     @BeforeSuite
-    public static void chromeConfigs() {
-        // This is for Windows users
+    public static RemoteWebDriver chromeConfigs() throws MalformedURLException {
+
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         } else {
@@ -37,12 +35,13 @@ public class BaseTest {
         }
 
 
+        return null;
     }
 
     @BeforeMethod
-    // Send a parameter for 'baseURL' specified in XML
+
     @Parameters({"baseURL"})
-    // Make baseURL parameter optional, if it is null, then set it to something)
+
     public void launchBrowser(@Optional String baseURL) throws MalformedURLException {
         if (baseURL == null)
             baseURL ="https://bbb.testpro.io";
@@ -50,30 +49,16 @@ public class BaseTest {
         System.setProperty("webdriver.gecko.driver", "geckodriver");
         //driver = new FirefoxDriver();
         //driver = new SafariDriver();
-        driver = pickBrowser(System.getProperty("browser"));
+        driver = pickBrowser("cloud");
         actions = new Actions(driver);
-        // Make webdriver load the pages REALLY slow
-//        WebDriver augmentedDriver = new Augmenter().augment(driver);
-//        ChromiumNetworkConditions networkConditions = new ChromiumNetworkConditions();
-//        networkConditions.setDownloadThroughput(100 * 1024);
-//        networkConditions.setUploadThroughput(500 * 1024);
-//        networkConditions.setLatency(Duration.ofMillis(5000));
-//        ((HasNetworkConditions) augmentedDriver).setNetworkConditions(networkConditions);
-        // (comment out above lines to remove throttling)
-
-        // Wait for an element to show up for max of X seconds
-        // implicitlyWait(Duration.ofSeconds(60) will wait for UP to 60 seconds
-        // if element comes up after 1 second, it will move on
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
         wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-        // thread.sleep(60000) -- will wait 60s always
         url = baseURL;
         driver.get(url);
 
     }
 
-    private WebDriver pickBrowser(String browser) throws MalformedURLException {
+    public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.2:4444";
         switch (browser){
@@ -91,9 +76,25 @@ public class BaseTest {
             case "grid-chrome":
                 caps.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
+            case "cloud":
+                 return lamdaTest();
             default:
                 return driver = new ChromeDriver();
         }
+    }
+
+    private static WebDriver lamdaTest() throws MalformedURLException {
+        String userName = "seamugg";
+        String authKey="btsFW4HzFPIw7kwwr2jbB8gM4qJ6zUcxizdhu7ZrcUCcxzyseY";
+        String hub = "@hub.lambdatest.com/wd/hub";
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("browserName", "Chrome");
+        caps.setCapability("version", "107.0");
+        caps.setCapability("platform", "Windows");
+        caps.setCapability("resolution","1280x1024");
+        caps.setCapability("build", "TestNG with Java");
+        caps.setCapability("plugin", "git-testing");
+        return new RemoteWebDriver(new URL("https://" + userName + ":" + authKey + hub), caps);
     }
 
     @AfterMethod
@@ -130,7 +131,7 @@ public class BaseTest {
     }
 
     public void login(){
-        provideEmail("demo@class.com");
+        provideEmail("seamugg@yahoo.com");
         providePassword("te$t$tudent");
         clickSubmitBtn();
     }

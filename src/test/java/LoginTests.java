@@ -96,7 +96,7 @@ public class LoginTests extends BaseTest {
     @Test(enabled = false, priority = 2)
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
         provideEmail("seamugg@yahoo.com");
-        providePassword("");
+        providePassword("te$t$tudent");
         clickSubmitBtn();
 
         // Vd
@@ -116,12 +116,14 @@ public class LoginTests extends BaseTest {
 
         WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
         emailField.click();
-        emailField.sendKeys("demo@class.com");
+        emailField.sendKeys("seamugg@yahoo.com");
 
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
+        passwordField.sendKeys("seamugg@yahoo.com");
 
-        WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
+
+                WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
         submitButton.click();
 
         WebElement avatarIcon = driver.findElement(By.cssSelector("[alt='Avatar of student']"));
