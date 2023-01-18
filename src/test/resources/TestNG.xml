@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
+<suite name="RookieSuite">
 
-
-<suite name="TestNG">
-    <parameter name="BaseURL" value="https://bbb.testpro.io/" />
-
-    <test name="Lamda Test" preserve-order="false">
-
-
-    <test name="NewPlaylistName" preserve-order="false">
+    <test name="ProductSearch" preserve-order="true">
         <classes>
-            <class name="NewPlaylistName">
+            <class name="ProductSearch">
 
             </class>
         </classes>
     </test>
+
 </suite>
+

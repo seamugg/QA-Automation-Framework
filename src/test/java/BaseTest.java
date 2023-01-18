@@ -43,7 +43,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
-        url = "https://bbb.testpro.io/#!/home";
+        url = "https://www.webstaurantstore.com/";
         driver.get(url);
     }
 
@@ -75,6 +75,4 @@ public class BaseTest {
                 .visibilityOf(webElementLocator));
     }
 }
-
-
 
